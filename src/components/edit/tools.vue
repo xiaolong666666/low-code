@@ -16,6 +16,7 @@
 </template>
 
 <script setup>
+import { cloneDeep } from "lodash";
 import store from "@/store.js";
 import { getUuid } from "@utils/uuid.js";
 
@@ -35,7 +36,7 @@ const toolsList = [
           textAlign: "left",
           fontSize: "14px",
           fontWeight: "bold",
-          color: "#333",
+          color: "#333333",
         },
       },
     },
@@ -118,7 +119,7 @@ const toolsList = [
 
 const onAddComponent = (schema) => {
   // 防止修改数据时对原数据造成影响
-  const currentSchema = Object.assign({}, schema);
+  const currentSchema = cloneDeep(schema);
   const uuid = getUuid();
   currentSchema._id = uuid;
   store.components.push(currentSchema);

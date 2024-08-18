@@ -38,7 +38,7 @@ watch(store.components, (newValue) => {
 onMounted(() => {
   // iframe 实例存在
   if (iframeRef.value) {
-    // 600ms 后重置 iframe 内容（iframe需要加载时间才能监听到事件）
+    // 600ms 后重置 iframe 内容（iframe需要加载时间 => 才能监听到事件）
     setTimeout(() => {
       iframeRef.value.contentWindow.postMessage({
         message: INIT,

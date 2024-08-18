@@ -1,15 +1,20 @@
 <template>
   <div class="container">
-    <!-- 匹配对应组件 -->
-    <component
-      v-if="currentComponent"
-      :is="currentComponent.configName"
-      :info="currentComponent"
-    />
+    <ConfigLayout v-if="currentComponent">
+      <template #header>{{ currentComponent.name }}配置</template>
+      <!-- 匹配对应组件 -->
+      <component
+        :is="currentComponent.configName"
+        :info="currentComponent.settings"
+        @update="update"
+      />
+      <template #footer></template>
+    </ConfigLayout>
   </div>
 </template>
 
 <script>
+import ConfigLayout from "@c/configs/ConfigLayout.vue";
 import TitleTextConfig from "@c/configs/TitleTextConfig.vue";
 import ImageConfig from "@c/configs/ImageConfig.vue";
 import FormConfig from "@c/configs/FormConfig.vue";
@@ -18,6 +23,7 @@ import ArticleConfig from "@c/configs/ArticleConfig.vue";
 export default {
   // 注册组件
   components: {
+    ConfigLayout,
     TitleTextConfig,
     ImageConfig,
     FormConfig,
@@ -44,7 +50,21 @@ watch(
 // 根据 ID 获取匹配的组件
 function onCurrentComponentChange(_id) {
   const target = store.components.find((c) => c._id === _id);
-  currentComponent.value = Object.assign({}, target);
+  currentComponent.value = target;
+}
+
+function update(k, v) {
+  function handle(data) {
+    if (typeof data !== "object") return;
+    Object.keys(data).forEach((key) => {
+      if (key === k) {
+        data[key] = v;
+      } else {
+        handle(data[key]);
+      }
+    });
+  }
+  handle(currentComponent.value.settings);
 }
 </script>
 
