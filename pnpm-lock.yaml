@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@element-plus/icons-vue':
+    specifier: ^2.3.1
+    version: 2.3.1(vue@3.4.35)
   autoprefixer:
     specifier: ^10.4.20
     version: 10.4.20(postcss@8.4.41)
+  dexie:
+    specifier: ^4.0.8
+    version: 4.0.8
   element-plus:
     specifier: ^2.7.8
     version: 2.7.8(vue@3.4.35)
@@ -786,6 +792,10 @@ packages:
 
   /dayjs@1.11.12:
     resolution: {integrity: sha512-Rt2g+nTbLlDWZTwwrIXjy9MeiZmSDI375FvZs72ngxx8PDC6YXOeR3q5LAuPzjZQxhiWdRKac7RKV+YyQYfYIg==}
+    dev: false
+
+  /dexie@4.0.8:
+    resolution: {integrity: sha512-1G6cJevS17KMDK847V3OHvK2zei899GwpDiqfEXHP1ASvme6eWJmAp9AU4s1son2TeGkWmC0g3y8ezOBPnalgQ==}
     dev: false
 
   /didyoumean@1.2.2:

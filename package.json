@@ -17,7 +17,9 @@
     "vite": "^5.3.5"
   },
   "dependencies": {
+    "@element-plus/icons-vue": "^2.3.1",
     "autoprefixer": "^10.4.20",
+    "dexie": "^4.0.8",
     "element-plus": "^2.7.8",
     "lodash": "^4.17.21",
     "postcss": "^8.4.41",

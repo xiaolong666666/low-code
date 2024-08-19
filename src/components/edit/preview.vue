@@ -11,7 +11,7 @@
       <!-- 预览主体 -->
       <iframe
         ref="iframeRef"
-        src="/edit/preview/123"
+        :src="`/edit/preview/${pageId}`"
         frameborder="0"
         class="iframe iframe-tailwind"
       ></iframe>
@@ -22,18 +22,45 @@
 <script setup>
 import { ref, watch, toRaw, onMounted } from "vue";
 import { ElAlert } from "element-plus";
+import { cloneDeep } from "lodash";
 import store from "@/store.js";
+import { addPage } from "@/db.js";
 import { INIT, CREATE_COMPONENT, SELECT_COMPONENT } from "@const";
+
+const { pageId } = defineProps(["pageId"]);
 
 const iframeRef = ref(null);
 
 // 父容器监听 store.components, 传递数据给 iframe
 watch(store.components, (newValue) => {
+  const rawComponents = toRaw(newValue);
+  const rawCurrentComponentId = toRaw(store.currentComponentId);
+  const rawCounter = toRaw(store.counter);
+  console.log("store.components", newValue);
   iframeRef.value.contentWindow.postMessage({
     message: CREATE_COMPONENT,
-    data: toRaw(newValue),
+    data: rawComponents,
+  });
+  addPage(pageId, {
+    components: rawComponents,
+    currentComponentId: rawCurrentComponentId,
+    counter: rawCounter,
   });
 });
+
+watch(
+  () => store.components,
+  (newValue) => {
+    const rawComponents = toRaw(newValue);
+    console.log("() => store.components", newValue);
+    setTimeout(() => {
+      iframeRef.value.contentWindow.postMessage({
+        message: CREATE_COMPONENT,
+        data: rawComponents,
+      });
+    }, 600);
+  }
+);
 
 onMounted(() => {
   // iframe 实例存在
