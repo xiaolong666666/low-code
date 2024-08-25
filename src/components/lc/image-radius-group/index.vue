@@ -1,7 +1,7 @@
 <template>
   <RadioButtonGroup
-    :dataSource="textAlignList"
-    :v="textAlign"
+    :dataSource="borderRadiusList"
+    :v="borderRadius"
     :change="onChange"
   />
 </template>
@@ -9,13 +9,12 @@
 <script setup>
 import RadioButtonGroup from "@lc/common/radio-button-group.vue";
 
-const { textAlign } = defineProps(["textAlign"]);
+const { borderRadius } = defineProps(["borderRadius"]);
 const emit = defineEmits(["change"]);
 
-const textAlignList = [
-  { value: "left", label: "居左" },
-  { value: "center", label: "居中" },
-  { value: "right", label: "居右" },
+const borderRadiusList = [
+  { value: "unset", label: "正常" },
+  { value: "50%", label: "椭圆" },
 ];
 
 function onChange(v) {

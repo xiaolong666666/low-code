@@ -6,9 +6,9 @@
     <div class="item">
       <div class="item-left">文本内容：</div>
       <div class="item-right">
-        <input
-          v-model="info.content"
-          @input="(e) => change('content', e.target.value)"
+        <ContentInput
+          :value="info.content"
+          @input="(v) => change('content', v)"
         />
       </div>
     </div>
@@ -42,10 +42,9 @@
     <div class="item">
       <div class="item-left">字体颜色：</div>
       <div class="item-right">
-        <input
-          type="color"
-          v-model="info.style.color"
-          @input="(e) => change('color', e.target.value)"
+        <FontColorInput
+          :color="info.style.color"
+          @change="(v) => change('color', v)"
         />
       </div>
     </div>
@@ -53,9 +52,11 @@
 </template>
 
 <script setup>
+import ContentInput from "@lc/content-input/index.vue";
 import FontSizeInput from "@lc/font-size-input/index.vue";
 import FontWeightGroup from "@lc/font-weight-group/index.vue";
 import TextAlignGroup from "@lc/text-align-group/index.vue";
+import FontColorInput from "@lc/font-color-input/index.vue";
 
 defineProps(["info"]);
 const emit = defineEmits(["update"]);
@@ -66,27 +67,5 @@ function change(k, v) {
 </script>
 
 <style scoped>
-.item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 26px;
-  margin: 8px 0;
-  box-sizing: border-box;
-}
-
-.item-left {
-  width: 30%;
-}
-
-.item-right {
-  width: 60%;
-  justify-content: space-between;
-}
-
-.item-right input {
-  flex: 1;
-  border: 1px solid black;
-  border-radius: 4px;
-}
+@import url(./common-config.css);
 </style>

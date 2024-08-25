@@ -42,7 +42,7 @@ export default {
 <script setup>
 import { onMounted } from "vue";
 import store from "@/store.js";
-import { INIT, CREATE_COMPONENT, SELECT_COMPONENT } from "@const";
+import { INIT, SYNC_MESSAGE, SELECT_COMPONENT } from "@const";
 
 // iframe 的父容器
 let parent = null;
@@ -55,8 +55,8 @@ onMounted(() => {
         case INIT:
           onInit(event);
           break;
-        case CREATE_COMPONENT:
-          onCreateComponent(data);
+        case SYNC_MESSAGE:
+          onSyncMessage(data);
           break;
         default:
           break;
@@ -70,11 +70,11 @@ function onInit(event) {
   parent = event.source;
 }
 
-function onCreateComponent(data) {
+function onSyncMessage(data) {
   // 接收到 iframe 父容器传来的组件列表数据，并更新 store
-  store.components = data;
-  // 将新创建的组件 id 设为 currentComponentId
-  store.currentComponentId = data[data.length - 1]._id;
+  Object.keys(data).forEach((key) => {
+    store[key] = data[key];
+  });
 }
 
 function onSelectComponent(_id) {

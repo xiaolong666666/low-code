@@ -51,9 +51,9 @@ const toolsList = [
       componentName: "Image",
       configName: "ImageConfig",
       settings: {
-        src: "https://q7.itc.cn/q_70/images03/20240129/b2bee60c8dbc48a0872c179aef2def2a.jpeg",
+        url: "https://q7.itc.cn/q_70/images03/20240129/b2bee60c8dbc48a0872c179aef2def2a.jpeg",
         style: {
-          backgroundPosition: "",
+          borderRadius: "unset",
         },
       },
     },
@@ -88,7 +88,7 @@ const toolsList = [
       componentName: "Figma",
       configName: "FigmaConfig",
       settings: {
-        src: "https://q7.itc.cn/q_70/images03/20240129/b2bee60c8dbc48a0872c179aef2def2a.jpeg",
+        url: "https://gd-hbimg.huaban.com/73c11dcb7915ec24919c29258f58a5cd9c394d293dc6a-3nnPEL_fw1200",
         style: {
           backgroundPosition: "",
         },

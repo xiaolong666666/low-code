@@ -21,44 +21,51 @@
 
 <script setup>
 import { ref, watch, toRaw, onMounted } from "vue";
-import { ElAlert } from "element-plus";
-import { cloneDeep } from "lodash";
 import store from "@/store.js";
 import { addPage } from "@/db.js";
-import { INIT, CREATE_COMPONENT, SELECT_COMPONENT } from "@const";
+import { INIT, SYNC_MESSAGE, SELECT_COMPONENT } from "@const";
 
 const { pageId } = defineProps(["pageId"]);
 
 const iframeRef = ref(null);
 
-// 父容器监听 store.components, 传递数据给 iframe
-watch(store.components, (newValue) => {
-  const rawComponents = toRaw(newValue);
-  const rawCurrentComponentId = toRaw(store.currentComponentId);
-  const rawCounter = toRaw(store.counter);
-  console.log("store.components", newValue);
-  iframeRef.value.contentWindow.postMessage({
-    message: CREATE_COMPONENT,
-    data: rawComponents,
-  });
-  addPage(pageId, {
-    components: rawComponents,
-    currentComponentId: rawCurrentComponentId,
-    counter: rawCounter,
-  });
-});
+function getLatestStore() {
+  const components = toRaw(store.components);
+  const currentComponentId = toRaw(store.currentComponentId);
+  const counter = toRaw(store.counter);
 
+  return { components, currentComponentId, counter };
+}
+
+// 父容器监听 store.components, 传递数据给 iframe
 watch(
   () => store.components,
+  () => {
+    const newStore = getLatestStore();
+
+    iframeRef.value.contentWindow.postMessage({
+      message: SYNC_MESSAGE,
+      data: newStore,
+    });
+    addPage(pageId, newStore);
+  },
+  { deep: true }
+);
+
+// 读取缓存数据后初始化 iframe 数据
+watch(
+  () => store.cache,
   (newValue) => {
-    const rawComponents = toRaw(newValue);
-    console.log("() => store.components", newValue);
-    setTimeout(() => {
-      iframeRef.value.contentWindow.postMessage({
-        message: CREATE_COMPONENT,
-        data: rawComponents,
-      });
-    }, 600);
+    if (newValue) {
+      const newStore = getLatestStore();
+
+      setTimeout(() => {
+        iframeRef.value.contentWindow.postMessage({
+          message: SYNC_MESSAGE,
+          data: newStore,
+        });
+      }, 600);
+    }
   }
 );
 

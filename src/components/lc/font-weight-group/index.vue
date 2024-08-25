@@ -1,17 +1,14 @@
 <template>
-  <div class="wrapper">
-    <template v-for="item in fontWeightList" :key="item">
-      <button
-        @click="handleClick(item.value)"
-        :class="['button', fontWeight === item.value ? 'active' : '']"
-      >
-        {{ item.label }}
-      </button>
-    </template>
-  </div>
+  <RadioButtonGroup
+    :dataSource="fontWeightList"
+    :v="fontWeight"
+    :change="onChange"
+  />
 </template>
 
 <script setup>
+import RadioButtonGroup from "@lc/common/radio-button-group.vue";
+
 const { fontWeight } = defineProps(["fontWeight"]);
 const emit = defineEmits(["change"]);
 
@@ -21,25 +18,9 @@ const fontWeightList = [
   { value: "bold", label: "更粗" },
 ];
 
-function handleClick(v) {
+function onChange(v) {
   emit("change", v);
 }
 </script>
 
-<style scoped>
-.wrapper {
-  display: flex;
-  gap: 8px;
-}
-.button {
-  padding: 0 4px;
-  border: 1px solid #afafaf;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.active {
-  background-color: #409eff;
-  color: #fff;
-  border: 1px solid transparent;
-}
-</style>
+<style scoped></style>

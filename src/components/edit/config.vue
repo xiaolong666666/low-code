@@ -3,7 +3,9 @@
     <ConfigLayout v-if="currentComponent">
       <template #header>{{ currentComponent.name }}配置</template>
       <!-- 匹配对应组件 -->
+      <!-- :key 确保同类组件不被缓存 -->
       <component
+        :key="currentComponent._id"
         :is="currentComponent.configName"
         :info="currentComponent.settings"
         @update="update"

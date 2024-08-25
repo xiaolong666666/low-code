@@ -5,10 +5,10 @@
         <span class="text-xl">🔙</span>
       </router-link>
       <el-button-group>
-        <el-button type="normal" :icon="ArrowLeft" @click="onBackout"
+        <el-button type="default" :icon="ArrowLeft" @click="onBackout"
           >撤销</el-button
         >
-        <el-button type="normal" @click="onRecover"
+        <el-button type="default" @click="onRecover"
           >恢复<el-icon class="el-icon--right"><ArrowRight /></el-icon>
         </el-button>
       </el-button-group>
@@ -22,7 +22,6 @@
 </template>
 
 <script setup>
-import { ElButtonGroup, ElButton } from "element-plus";
 import { ArrowLeft, ArrowRight } from "@element-plus/icons-vue";
 
 const { onBackout, onRecover } = defineProps(["onBackout", "onRecover"]);

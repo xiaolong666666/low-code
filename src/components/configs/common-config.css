@@ -1,0 +1,19 @@
+.item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  margin: 16px 0;
+  box-sizing: border-box;
+}
+
+.item-left {
+  width: 40%;
+  height: 32px;
+}
+
+.item-right {
+  width: 60%;
+  height: 32px;
+  justify-content: space-between;
+}

@@ -30,6 +30,7 @@ const updatePreview = (record) => {
     store.components = record.components;
     store.currentComponentId = record.currentComponentId;
     store.counter = record.counter;
+    store.cache = true;
   }
 };
 

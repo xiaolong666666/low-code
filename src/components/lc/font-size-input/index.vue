@@ -1,7 +1,14 @@
 <template>
   <div class="wrapper">
-    <input type="number" v-model="valRef" @input="onInput" min="12" max="36" />
-    <div class="suffix">px</div>
+    <el-input-number
+      v-model="valRef"
+      :min="12"
+      :max="36"
+      controls-position="right"
+      @change="onChange"
+      class="input-number"
+    />
+    <div class="el-input-group__append">px</div>
   </div>
 </template>
 
@@ -11,11 +18,11 @@ const { fontSize } = defineProps(["fontSize"]);
 const emit = defineEmits(["change"]);
 const valRef = ref(fontSize ? `${parseInt(fontSize)}` : "14");
 
-function onInput(e) {
-  if (e.target.value < 12) {
+function onChange(v) {
+  if (v < 12) {
     valRef.value = "12";
   }
-  if (e.target.value > 36) {
+  if (v > 36) {
     valRef.value = "36";
   }
   emit("change", `${valRef.value}px`);
@@ -25,20 +32,14 @@ function onInput(e) {
 <style scoped>
 .wrapper {
   display: flex;
-}
-.wrapper input {
-  flex: 1;
-  border: 1px solid black;
-  border-radius: 4px;
+  justify-content: space-between;
 }
 
-.wrapper .suffix {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 26px;
-  height: 26px;
-  background-color: #cfcfcf;
-  border-radius: 4px;
+.input-number {
+  width: 100%;
+}
+
+.el-input-group__append {
+  padding: 0 8px;
 }
 </style>
