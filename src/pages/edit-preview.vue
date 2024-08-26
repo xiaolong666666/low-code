@@ -24,6 +24,8 @@
 <script>
 import TitleText from "@c/views/TitleText.vue";
 import Image from "@c/views/Image.vue";
+import Space from "@c/views/Space.vue";
+import Carousel from "@c/views/Carousel.vue";
 import Form from "@c/views/Form.vue";
 import Figma from "@c/views/Figma.vue";
 import Article from "@c/views/Article.vue";
@@ -32,6 +34,8 @@ export default {
   components: {
     TitleText,
     Image,
+    Space,
+    Carousel,
     Form,
     Figma,
     Article,

@@ -2,8 +2,8 @@
   <div class="wrapper">
     <el-input-number
       v-model="valRef"
-      :min="12"
-      :max="36"
+      :min="min"
+      :max="max"
       controls-position="right"
       @change="onChange"
       class="input-number"
@@ -14,16 +14,21 @@
 
 <script setup>
 import { ref } from "vue";
-const { fontSize } = defineProps(["fontSize"]);
+const { v, defaultValue, min, max } = defineProps([
+  "v",
+  "defaultValue",
+  "min",
+  "max",
+]);
 const emit = defineEmits(["change"]);
-const valRef = ref(fontSize ? `${parseInt(fontSize)}` : "14");
+const valRef = ref(v ? `${parseInt(v)}` : defaultvalue);
 
 function onChange(v) {
-  if (v < 12) {
-    valRef.value = "12";
+  if (v < Number(min)) {
+    valRef.value = min;
   }
-  if (v > 36) {
-    valRef.value = "36";
+  if (v > Number(max)) {
+    valRef.value = max;
   }
   emit("change", `${valRef.value}px`);
 }

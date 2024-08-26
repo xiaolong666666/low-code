@@ -24,9 +24,12 @@
     <div class="item">
       <div class="item-left">字体大小：</div>
       <div class="item-right">
-        <FontSizeInput
-          :fontSize="info.style.fontSize"
+        <NumberInput
+          :v="info.style.fontSize"
           @change="(v) => change('fontSize', v)"
+          defaultValue="14"
+          min="12"
+          max="36"
         />
       </div>
     </div>
@@ -53,7 +56,7 @@
 
 <script setup>
 import ContentInput from "@lc/content-input/index.vue";
-import FontSizeInput from "@lc/font-size-input/index.vue";
+import NumberInput from "@lc/number-input/index.vue";
 import FontWeightGroup from "@lc/font-weight-group/index.vue";
 import TextAlignGroup from "@lc/text-align-group/index.vue";
 import FontColorInput from "@lc/font-color-input/index.vue";

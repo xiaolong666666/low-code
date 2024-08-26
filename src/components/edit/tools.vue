@@ -59,6 +59,40 @@ const toolsList = [
     },
   },
   {
+    icon: "/images/space.svg",
+    title: "留白",
+    limit: 500,
+    componentName: "Space",
+    componentSchema: {
+      name: "留白",
+      componentName: "Space",
+      configName: "SpaceConfig",
+      settings: {
+        style: {
+          height: "24px",
+        },
+      },
+    },
+  },
+  {
+    icon: "/images/carousel.svg",
+    title: "轮播",
+    limit: 5,
+    componentName: "Carousel",
+    componentSchema: {
+      name: "轮播",
+      componentName: "Carousel",
+      configName: "CarouselConfig",
+      settings: {
+        urls: [
+          "https://q7.itc.cn/q_70/images03/20240129/b2bee60c8dbc48a0872c179aef2def2a.jpeg",
+          "https://gd-hbimg.huaban.com/73c11dcb7915ec24919c29258f58a5cd9c394d293dc6a-3nnPEL_fw1200",
+          "https://pic.rmb.bdstatic.com/f51c39178112a3a90e921d8359eff916.png",
+        ],
+      },
+    },
+  },
+  {
     icon: "/images/form.svg",
     title: "表单",
     limit: 50,
