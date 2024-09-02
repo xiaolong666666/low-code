@@ -86,7 +86,9 @@ const toolsList = [
       settings: {
         urls: [
           "https://q7.itc.cn/q_70/images03/20240129/b2bee60c8dbc48a0872c179aef2def2a.jpeg",
-          "https://gd-hbimg.huaban.com/73c11dcb7915ec24919c29258f58a5cd9c394d293dc6a-3nnPEL_fw1200",
+          // "https://pic.rmb.bdstatic.com/bjh/down/4b66a99c1059865ee2c2dee18d956876.jpeg",
+          // "https://img.likebizhi.com/1821652950/123pan/123panlikebizhi/240104061004.jpg",
+          // "https://gd-hbimg.huaban.com/73c11dcb7915ec24919c29258f58a5cd9c394d293dc6a-3nnPEL_fw1200",
           "https://pic.rmb.bdstatic.com/f51c39178112a3a90e921d8359eff916.png",
         ],
       },
