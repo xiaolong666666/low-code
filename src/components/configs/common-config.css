@@ -19,3 +19,36 @@
   height: 32px;
   justify-content: space-between;
 }
+
+.wrapper {
+  margin-bottom: 16px;
+}
+
+.grid {
+  display: grid;
+  width: 100%;
+  background: #ebedf0;
+  box-sizing: border-box;
+  font-size: 12px;
+}
+
+.grid_item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #ebedf0;
+  text-align: center;
+}
+
+.grid_item_selecting {
+  background: #e0edff;
+  box-sizing: border-box;
+}
+
+.grid_item_selected {
+  background: #e0edff;
+  color: #155bd4;
+  border: 1px solid #155bd4;
+  box-sizing: border-box;
+}

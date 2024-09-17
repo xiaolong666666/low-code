@@ -95,6 +95,20 @@ const toolsList = [
     },
   },
   {
+    icon: "/images/layout.svg",
+    title: "布局",
+    limit: 50,
+    componentName: "Layout",
+    componentSchema: {
+      name: "布局",
+      componentName: "Layout",
+      configName: "LayoutConfig",
+      settings: {
+        config: {},
+      },
+    },
+  },
+  {
     icon: "/images/form.svg",
     title: "表单",
     limit: 50,

@@ -21,6 +21,7 @@ import TitleTextConfig from "@c/configs/TitleTextConfig.vue";
 import ImageConfig from "@c/configs/ImageConfig.vue";
 import SpaceConfig from "@c/configs/SpaceConfig.vue";
 import CarouselConfig from "@c/configs/CarouselConfig.vue";
+import LayoutConfig from "@c/configs/LayoutConfig.vue";
 import FormConfig from "@c/configs/FormConfig.vue";
 import FigmaConfig from "@c/configs/FigmaConfig.vue";
 import ArticleConfig from "@c/configs/ArticleConfig.vue";
@@ -32,6 +33,7 @@ export default {
     ImageConfig,
     SpaceConfig,
     CarouselConfig,
+    LayoutConfig,
     FormConfig,
     FigmaConfig,
     ArticleConfig,
